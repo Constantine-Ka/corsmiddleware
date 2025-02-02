@@ -224,6 +224,7 @@ WantedBy=multi-user.target
     location /cors {
 		proxy_pass http://localhost:8008/;
 		proxy_set_header X-Real-Ip $remote_addr;
+		add_header 'Access-Control-Allow-Origin' '*';
 	}
  
 ```
