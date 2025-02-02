@@ -1,0 +1,69 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Сервис-посредник, для работы с rest API, с защитой КОРС",
+        "title": "CORS Midlleware",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Constantine",
+            "url": "https://github.com/Constantine-Ka/corsmiddleware"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/": {
+            "post": {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "http-метод, с которым нужно отправить запрос",
+                        "name": "_method",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "URL по которому нужно выполнить запрос",
+                        "name": "_url",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Заголовки, которые нужно передать",
+                        "name": "_headers",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Тело запроса, которые нужно передать в raw",
+                        "name": "_json",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Любые поля и значения в формате formdata",
+                        "name": "прочее",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response from the target URL",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request.  Check the error message for details.",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

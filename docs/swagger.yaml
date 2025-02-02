@@ -1,0 +1,45 @@
+info:
+  contact:
+    name: Constantine
+    url: https://github.com/Constantine-Ka/corsmiddleware
+  description: Сервис-посредник, для работы с rest API, с защитой КОРС
+  termsOfService: http://swagger.io/terms/
+  title: CORS Midlleware
+  version: "1.0"
+paths:
+  /:
+    post:
+      parameters:
+      - description: http-метод, с которым нужно отправить запрос
+        in: formData
+        name: _method
+        type: string
+      - description: URL по которому нужно выполнить запрос
+        in: formData
+        name: _url
+        required: true
+        type: string
+      - description: Заголовки, которые нужно передать
+        in: formData
+        name: _headers
+        type: string
+      - description: Тело запроса, которые нужно передать в raw
+        in: formData
+        name: _json
+        type: string
+      - description: Любые поля и значения в формате formdata
+        in: formData
+        name: прочее
+        type: string
+      responses:
+        "200":
+          description: Response from the target URL
+          schema:
+            type: object
+        "400":
+          description: Bad Request.  Check the error message for details.
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+swagger: "2.0"
